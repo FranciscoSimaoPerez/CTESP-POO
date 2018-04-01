@@ -1,0 +1,5 @@
+﻿  jogo.cpp
+c:\users\fperez\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(12): warning C4838: conversion from 'int' to 'const char' requires a narrowing conversion
+c:\users\fperez\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(12): warning C4309: 'initializing': truncation of constant value
+  JogoDoGalo.vcxproj -> C:\Users\FPerez\Documents\Visual Studio 2015\Projects\JogoDoGalo\Debug\JogoDoGalo.exe
+  JogoDoGalo.vcxproj -> C:\Users\FPerez\Documents\Visual Studio 2015\Projects\JogoDoGalo\Debug\JogoDoGalo.pdb (Full PDB)
