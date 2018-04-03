@@ -14,7 +14,7 @@ int menu() {
 		switch (opcao) {
 		case 1:
 			system("CLS");
-			
+			jogo();
 			break;
 		case 2:
 			system("CLS");
