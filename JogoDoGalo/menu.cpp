@@ -9,7 +9,7 @@ int menu() {
 		cout << "Menu:" << endl;
 		cout << "1 - Novo Jogo" << endl;
 		cout << "2 - Sair " << endl;
-		cout << "Escolha uma opcao valida:";
+		cout << "Escolha uma opcao valida: ";
 		cin >> opcao;
 		switch (opcao) {
 		case 1:

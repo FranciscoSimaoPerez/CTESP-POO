@@ -4,6 +4,8 @@
 #include <chrono>
 #include <thread>
 
+// Falta fazer guardar score e nome do jogador no fim, como 
+
 using namespace std;
 using namespace std::this_thread; // Serve para poder utilizar sleep_for, sleep_until
 using namespace std::chrono; // Serve para poder usar estas medidas de tempo nanoseconds, system_clock, seconds
@@ -17,7 +19,7 @@ char valores[3][3] = { { '1', '2','3' },{ '4', '5', '6' },{ '7','8','9' } };//Va
 //Funcao que mostra grelha de jogo
 int mostraGrelha(){
 	system("CLS");
-	cout << "---------- Jogo do Galo ----------" << endl;
+	cout << "---------- Jogo do Galo ----------\n";
 	cout << "           " << grelha[5] << grelha[9] << grelha[9] << grelha[9] << grelha[7] << grelha[9] << grelha[9] << grelha[9] << grelha[7] << grelha[9] << grelha[9] << grelha[9] << grelha[2] << endl;
 	cout << "           " << grelha[1] << " " << valores[0][0] << " " << grelha[1] << " " << valores[0][1] << " " << grelha[1] << " " << valores[0][2] << " " << grelha[1] << endl;
 	cout << "           " << grelha[8] << grelha[9] << grelha[9] << grelha[9] << grelha[10] << grelha[9] << grelha[9] << grelha[9] << grelha[10] << grelha[9] << grelha[9] << grelha[9] << grelha[0] << endl;
@@ -25,6 +27,7 @@ int mostraGrelha(){
 	cout << "           " << grelha[8] << grelha[9] << grelha[9] << grelha[9] << grelha[10] << grelha[9] << grelha[9] << grelha[9] << grelha[10] << grelha[9] << grelha[9] << grelha[9] << grelha[0] << endl;
 	cout << "           " << grelha[1] << " " << valores[2][0] << " " << grelha[1] << " " << valores[2][1] << " " << grelha[1] << " " << valores[2][2] << " " << grelha[1] << endl;
 	cout << "           " << grelha[4] << grelha[9] << grelha[9] << grelha[9] << grelha[6] << grelha[9] << grelha[9] << grelha[9] << grelha[6] << grelha[9] << grelha[9] << grelha[9] << grelha[3] << endl;
+	cout << "----------------------------------\n";
 	return 0;
 }	
 
@@ -108,9 +111,11 @@ int jogo() {
 		cin >> opcao;
 		if (opcao == 1) {
 			cout << "Escolheu jogar so um jogador \n";
+			sleep_until(system_clock::now() + 2s);
 		}
 		else if (opcao == 2) {
 			cout << "Escolheu jogar com dois jogadores \n";
+			sleep_until(system_clock::now() + 2s);
 		}
 		else {
 			cout << "Introduza uma opcao valida \n";
@@ -144,7 +149,7 @@ int jogo() {
 		} while (jogador != 'X' && jogador != 'x' && jogador != 'O' && jogador != 'o');
 		jogador = toupper(jogador);
 		cout << "Escolheu ser o '" << jogador << "'! \n";
-		sleep_until(system_clock::now() + 3s);
+		sleep_until(system_clock::now() + 2s);
 		if (jogador == 'X')
 		{
 			computador = 'O';
@@ -247,8 +252,131 @@ int jogo() {
 			cout << "Parabens ganhou o jogo! \n";
 			sleep_until(system_clock::now() + 3s);
 		}
-		else {
+		else if ((vencedor == 'X' && jogador != 'X') || (vencedor == 'O' && jogador != 'O')) {
 			cout << "Perdeu o jogo contra o computador! \n";
+			sleep_until(system_clock::now() + 3s);
+		}
+		else {
+			cout << "Jogo terminou empatado! \n";
+			sleep_until(system_clock::now() + 3s);
+		}
+		cout << "Deseja voltar ao menu?(S ou N) \n";
+		do {
+			cin >> voltarMenu;
+			if (voltarMenu != 'S' && voltarMenu != 's' && voltarMenu != 'N' && voltarMenu != 'n') {
+				cout << "Introduza uma opcao valida: ";
+			}
+		} while (voltarMenu != 'S' && voltarMenu != 's' && voltarMenu != 'N' && voltarMenu != 'n');
+		if (voltarMenu == 'S' || voltarMenu == 's') {
+			menu();
+		}
+		return 0;
+	}
+	else if (opcao == 2) {
+		mostraGrelha();
+		cout << "Jogador 1 sera 'X' e Jogador 2 sera 'O' \n";
+		cout << "Boa Sorte e que ganhe o melhor!";
+		sleep_until(system_clock::now() + 3s);
+		mostraGrelha();
+		while (existeVencedor == false && numeroJogadas < 9) {
+			if (numeroJogadas % 2 == 0) {
+				jogador = 'X';
+				cout << "Turno do Jogador 'X' \n";
+			}
+			else {
+				jogador = 'O';
+				cout << "Turno do Jogador 'O' \n";
+			}
+			cout << "Selecione a posicao desejada: ";
+			cin >> posicao;
+			switch (posicao) {
+				case 1:
+					if (valores[0][0] != 'X' && valores[0][0] != 'O') {
+						valores[0][0] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				case 2:
+					if (valores[0][1] != 'X' && valores[0][1] != 'O') {
+						valores[0][1] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				case 3:
+					if (valores[0][2] != 'X' && valores[0][2] != 'O') {
+						valores[0][2] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				case 4:
+					if (valores[1][0] != 'X' && valores[1][0] != 'O') {
+						valores[1][0] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				case 5:
+					if (valores[1][1] != 'X' && valores[1][1] != 'O') {
+						valores[1][1] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				case 6:
+					if (valores[1][2] != 'X' && valores[1][2] != 'O') {
+						valores[1][2] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				case 7:
+					if (valores[2][0] != 'X' && valores[2][0] != 'O') {
+						valores[2][0] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				case 8:
+					if (valores[2][1] != 'X' && valores[2][1] != 'O') {
+						valores[2][1] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				case 9:
+					if (valores[2][2] != 'X' && valores[2][2] != 'O') {
+						valores[2][2] = jogador;
+						mostraGrelha();
+						existeVencedor = verificaJogo(valores);
+						numeroJogadas++;
+					}
+					break;
+				default:
+					cout << "Escolheu uma opcao invalida \n";
+					break;
+			}
+		}
+		if ((vencedor == 'X' && jogador == 'X') || (vencedor == 'O' && jogador == 'O')) {
+			cout << "O jogador 'X' ganhou o jogo! \n";
+			sleep_until(system_clock::now() + 3s);
+		}
+		else if ((vencedor == 'X' && jogador != 'X') || (vencedor == 'O' && jogador != 'O')) {
+			cout << "O jogador 'O' ganhou o jogo! \n";
+			sleep_until(system_clock::now() + 3s);
+		}
+		else {
+			cout << "Jogo terminou empatado! \n";
 			sleep_until(system_clock::now() + 3s);
 		}
 		cout << "Deseja voltar ao menu?(S ou N) \n";
