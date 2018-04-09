@@ -111,10 +111,6 @@ int registaScore(string nomeJogador) {
 }
 
 int jogo(int opcao) {
-	// Prototipagem
-	int registaScore(string nomeJogador);
-	int reiniciaValores();
-
 	// Chamada da Função que reinicia o array Valores
 	reiniciaValores();
 
@@ -166,72 +162,91 @@ int jogo(int opcao) {
 		sleep_until(system_clock::now() + 3s);
 
 		while (existeVencedor == false && numeroJogadas < 9) {
+			mostraGrelha();
 			if (turno == true) {
 				cout << "Selecione a posicao desejada: ";
 				cin >> posicao;
 				switch (posicao) {
 				case 1:
-					valores[0][0] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[0][0] != 'X' && valores[0][0] != 'O') {
+						valores[0][0] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				case 2:
-					valores[0][1] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[0][1] != 'X' && valores[0][0] != 'O') {
+						valores[0][1] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				case 3:
-					valores[0][2] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[0][2] != 'X' && valores[0][2] != 'O') {
+						valores[0][2] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				case 4:
-					valores[1][0] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[1][0] != 'X' && valores[1][0] != 'O') {
+						valores[1][0] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				case 5:
-					valores[1][1] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[1][1] != 'X' && valores[1][1] != 'O') {
+						valores[1][1] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				case 6:
-					valores[1][2] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[1][2] != 'X' && valores[1][2] != 'O') {
+						valores[1][2] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				case 7:
-					valores[2][0] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[2][0] != 'X' && valores[2][0] != 'O') {
+						valores[2][0] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				case 8:
-					valores[2][1] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[2][1] != 'X' && valores[2][1] != 'O') {
+						valores[2][1] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				case 9:
-					valores[2][2] = jogador;
-					turno = false;
-					mostraGrelha();
-					numeroJogadas++;
-					existeVencedor = verificaJogo(valores);
+					if (valores[2][2] != 'X' && valores[2][2] != 'O') {
+						valores[2][2] = jogador;
+						turno = false;
+						mostraGrelha();
+						numeroJogadas++;
+						existeVencedor = verificaJogo(valores);
+					}
 					break;
 				default:
 					cout << "Escolheu uma opcao invalida \n";
