@@ -3,19 +3,23 @@
 #include "Header.h"
 #include <chrono>
 #include <thread>
+#include <fstream>
 
-// Falta fazer guardar score e nome do jogador no fim, como 
+// Falta fazer guardar score e nome do jogador no fim
 
 using namespace std;
 using namespace std::this_thread; // Serve para poder utilizar sleep_for, sleep_until
 using namespace std::chrono; // Serve para poder usar estas medidas de tempo nanoseconds, system_clock, seconds
 
-
+//Variáveis globais
 int opcao, posicao, turnoDesejado;
 char vencedor;
 char jogador, jogador2, computador;//Variáveis de cada jogador (X ou O)
 const char grelha[11] = {185,186,187,188,200,201,202,203,204,205,206};//Valores ASCI armazenados em array para criacao da grelha de jogo
 char valores[3][3] = { { '1', '2','3' },{ '4', '5', '6' },{ '7','8','9' } };//Valores iniciais de cada posicao
+string nomeJogador;
+
+//Funções																			
 //Funcao que mostra grelha de jogo
 int mostraGrelha(){
 	system("CLS");
@@ -82,7 +86,6 @@ bool verificaJogo(char apontaValores[3][3]) {
 }
 
 // Funçao que reinicia os valores da grelha
-
 int reiniciaValores() {
 	char num = '0';
 	for (int y = 0; y < 3; y++) {
@@ -94,34 +97,34 @@ int reiniciaValores() {
 	return 0;
 }
 
-int jogo() {
+// Função que lê ficheiro e escreve
+int registaScore(string nomeJogador) {
+	ifstream ficheiroScore;
+	ficheiroScore.open("score.txt");
+	if (ficheiroScore.is_open()) {
+		cout << "Ficheiro Aberto";
+	}
+	else {
+		cout << "Não foi possível abrir o ficheiro score.txt!\n";
+	}
+	return 0;
+}
+
+int jogo(int opcao) {
+	// Prototipagem
+	int registaScore(string nomeJogador);
+	int reiniciaValores();
+
+	// Chamada da Função que reinicia o array Valores
 	reiniciaValores();
+
+	//Variáveis da função jogo
+	nomeJogador=" ";
 	int numeroJogadas = 0;
 	char voltarMenu;
 	bool turno = false;
 	bool existeVencedor = false;
 	vencedor = ' ';
-	system("CLS");
-	cout << "---------- Jogo do Galo ----------" << endl;
-	cout << "Novo jogo:" << endl;
-	cout << "1 - Um jogador \n";
-	cout << "2 - Dois Jogadores \n";
-	cout << "Escolha 1 opcao: ";
-	do {
-		cin >> opcao;
-		if (opcao == 1) {
-			cout << "Escolheu jogar so um jogador \n";
-			sleep_until(system_clock::now() + 2s);
-		}
-		else if (opcao == 2) {
-			cout << "Escolheu jogar com dois jogadores \n";
-			sleep_until(system_clock::now() + 2s);
-		}
-		else {
-			cout << "Introduza uma opcao valida \n";
-		}
-	} while (opcao != 1 && opcao != 2);
-
 	if (opcao == 1) {
 		system("CLS");
 		cout << "---------- Jogo do Galo ----------" << endl;
@@ -369,16 +372,23 @@ int jogo() {
 		}
 		if ((vencedor == 'X' && jogador == 'X') || (vencedor == 'O' && jogador == 'O')) {
 			cout << "O jogador 'X' ganhou o jogo! \n";
+			cout << "Introduza o seu nome Jogador 'X': ";
+			cin >> nomeJogador;
+			cout << "A sua vitória será guardada, "<< nomeJogador << "!\n";
 			sleep_until(system_clock::now() + 3s);
 		}
 		else if ((vencedor == 'X' && jogador != 'X') || (vencedor == 'O' && jogador != 'O')) {
 			cout << "O jogador 'O' ganhou o jogo! \n";
+			cout << "Introduza o seu nome Jogador 'O': ";
+			cin >> nomeJogador;
+			cout << "A sua vitória será guardada, " << nomeJogador << "!\n";
 			sleep_until(system_clock::now() + 3s);
 		}
 		else {
 			cout << "Jogo terminou empatado! \n";
 			sleep_until(system_clock::now() + 3s);
 		}
+		registaScore(nomeJogador);
 		cout << "Deseja voltar ao menu?(S ou N) \n";
 		do {
 			cin >> voltarMenu;
