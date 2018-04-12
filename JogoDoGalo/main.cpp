@@ -3,6 +3,7 @@
 #include "Header.h"
 #include <time.h>
 #include <fstream> 
+#include <vector>
 
 using namespace std;
 

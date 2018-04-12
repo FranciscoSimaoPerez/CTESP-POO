@@ -387,14 +387,14 @@ int jogo(int opcao) {
 		}
 		if ((vencedor == 'X' && jogador == 'X') || (vencedor == 'O' && jogador == 'O')) {
 			cout << "O jogador 'X' ganhou o jogo! \n";
-			cout << "Introduza o seu nome Jogador 'X': ";
+			cout << "Introduza o seu Username Jogador 'X': ";
 			cin >> nomeJogador;
 			cout << "A sua vitória será guardada, "<< nomeJogador << "!\n";
 			sleep_until(system_clock::now() + 3s);
 		}
 		else if ((vencedor == 'X' && jogador != 'X') || (vencedor == 'O' && jogador != 'O')) {
 			cout << "O jogador 'O' ganhou o jogo! \n";
-			cout << "Introduza o seu nome Jogador 'O': ";
+			cout << "Introduza o seu Username Jogador 'O': ";
 			cin >> nomeJogador;
 			cout << "A sua vitória será guardada, " << nomeJogador << "!\n";
 			sleep_until(system_clock::now() + 3s);
