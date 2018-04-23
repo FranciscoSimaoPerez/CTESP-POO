@@ -414,6 +414,6 @@ int jogo(int opcao) {
 		if (voltarMenu == 'S' || voltarMenu == 's') {
 			menu();
 		}
-		return 0;
 	}
+	return 0;
 }

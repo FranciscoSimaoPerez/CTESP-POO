@@ -8,6 +8,8 @@ using namespace std::this_thread; // Serve para poder utilizar sleep_for, sleep_
 using namespace std::chrono; // Serve para poder usar estas medidas de tempo nanoseconds, system_clock, seconds
 using namespace std;
 
+jogador Jogador;
+
 int novoJogoMenu() {
 	int opcao;
 	system("CLS");
@@ -56,6 +58,7 @@ int menu() {
 			break;
 		case 3:
 			system("CLS");
+			Jogador.criarJogador();
 			break;
 		case 4:
 			system("CLS");

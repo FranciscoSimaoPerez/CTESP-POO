@@ -1,14 +1,19 @@
 #pragma once
+#include <iostream>
+
+using namespace std;
+
 int menu();
 int jogo(int opcao);
+
 class jogador {
-	string nome;
+public:
+	char nome[10];
 	int idade;
 	int nVitorias;
 	int nJogos;
 	int racioVitoria;
 
-public:
 	//Métodos
 	//Cria Jogadores
 	int criarJogador() {
@@ -48,4 +53,4 @@ public:
 		racioVitoria = nVitorias / nJogos;
 		return 0;
 	}
-}jogadores[50];
+};

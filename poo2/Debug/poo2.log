@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\user\documents\visual studio 2015\projects\poo2\main.cpp(29): error C2039: 'get_nota_final': is not a member of 'aluno'
+  c:\users\user\documents\visual studio 2015\projects\poo2\main.cpp(8): note: see declaration of 'aluno'

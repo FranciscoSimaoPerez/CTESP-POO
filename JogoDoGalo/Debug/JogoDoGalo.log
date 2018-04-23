@@ -1,9 +1,8 @@
-﻿  menu.cpp
-  jogo.cpp
+﻿  jogo.cpp
 c:\users\user\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(18): warning C4838: conversion from 'int' to 'const char' requires a narrowing conversion
 c:\users\user\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(18): warning C4309: 'initializing': truncation of constant value
+  jogador.cpp
   Generating Code...
 c:\users\user\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(43): warning C4172: returning address of local variable or temporary: jogadaCPU
-c:\users\user\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(419): warning C4715: 'jogo': not all control paths return a value
   JogoDoGalo.vcxproj -> C:\Users\User\Documents\Visual Studio 2015\Projects\JogoDoGalo\Debug\JogoDoGalo.exe
   JogoDoGalo.vcxproj -> C:\Users\User\Documents\Visual Studio 2015\Projects\JogoDoGalo\Debug\JogoDoGalo.pdb (Full PDB)

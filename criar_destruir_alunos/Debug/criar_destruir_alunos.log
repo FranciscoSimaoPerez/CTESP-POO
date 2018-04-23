@@ -1,0 +1,8 @@
+﻿  Source.cpp
+c:\users\user\documents\visual studio 2015\projects\criar_destruir_alunos\source.cpp(18): error C2131: expression did not evaluate to a constant
+  c:\users\user\documents\visual studio 2015\projects\criar_destruir_alunos\source.cpp(18): note: failure was caused by non-constant arguments or reference to a non-constant symbol
+  c:\users\user\documents\visual studio 2015\projects\criar_destruir_alunos\source.cpp(18): note: see usage of 'b'
+c:\users\user\documents\visual studio 2015\projects\criar_destruir_alunos\source.cpp(21): error C2228: left of '.nome' must have class/struct/union
+  c:\users\user\documents\visual studio 2015\projects\criar_destruir_alunos\source.cpp(21): note: type is 'aluno [b]'
+c:\users\user\documents\visual studio 2015\projects\criar_destruir_alunos\source.cpp(26): error C2228: left of '.nome' must have class/struct/union
+  c:\users\user\documents\visual studio 2015\projects\criar_destruir_alunos\source.cpp(26): note: type is 'aluno [b]'

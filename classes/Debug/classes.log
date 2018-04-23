@@ -1,0 +1,7 @@
+﻿  Source.cpp
+c:\users\user\documents\visual studio 2015\projects\classes\source.cpp(35): warning C4822: 'not_main::empregado::mostradados': local class member function does not have a body
+c:\users\user\documents\visual studio 2015\projects\classes\source.cpp(36): error C2535: 'void not_main::empregado::mostradados(void)': member function already defined or declared
+  c:\users\user\documents\visual studio 2015\projects\classes\source.cpp(35): note: see declaration of 'not_main::empregado::mostradados'
+c:\users\user\documents\visual studio 2015\projects\classes\source.cpp(30): error C2440: 'return': cannot convert from 'char *' to 'int *'
+  c:\users\user\documents\visual studio 2015\projects\classes\source.cpp(30): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+c:\users\user\documents\visual studio 2015\projects\classes\source.cpp(33): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
