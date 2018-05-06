@@ -13,3 +13,4 @@ class Jogador;
 int menu();
 int jogo(int opcao);
 int main();
+char pedeOpcao();

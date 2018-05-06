@@ -11,7 +11,7 @@ using namespace std::chrono; // Serve para poder usar estas medidas de tempo nan
 
 
 int novoJogoMenu() {
-	int opcao;
+	char opcao;
 	system("CLS");
 	cout << "---------- Jogo do Galo ----------" << endl;
 	cout << "Novo jogo:" << endl;
@@ -19,7 +19,7 @@ int novoJogoMenu() {
 	cout << "2 - Dois Jogadores \n";
 	cout << "Escolha 1 opcao: ";
 	do {
-		cin >> opcao;
+		opcao = pedeOpcao();
 		if (opcao == 1) {
 			cout << "Escolheu jogar so um jogador \n";
 			sleep_until(system_clock::now() + 2s);
@@ -38,7 +38,7 @@ int novoJogoMenu() {
 }
 int menu() {
 	
-	int opcao = 0;
+	char opcao = 0;
 	do {
 		system("CLS");
 		cout << "---------- Jogo do Galo ----------\n";
@@ -46,7 +46,7 @@ int menu() {
 		cout << "1 - Novo Jogo \n";
 		cout << "2 - Sair \n";
 		cout << "Escolha uma opcao valida: ";
-		cin >> opcao;
+		opcao = pedeOpcao();
 		switch (opcao) {
 		case 1:
 			system("CLS");

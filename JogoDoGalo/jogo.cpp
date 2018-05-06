@@ -98,6 +98,13 @@ int reiniciaValores() {
 	return 0;
 }
 
+char pedeOpcao() {
+	char opcao;
+	cin >> opcao;
+	opcao -= 48;
+	return opcao;
+}
+
 int jogo(int opcao) {
 	// Chamada da Função que reinicia o array Valores
 	reiniciaValores();
@@ -113,7 +120,7 @@ int jogo(int opcao) {
 		cout << "---------- Jogo do Galo ----------" << endl;
 		cout << "Deseja ser o primeiro(1) ou segundo(2) a jogar? ";
 		do {
-			cin >> turnoDesejado;
+			turnoDesejado = pedeOpcao();
 			if (turnoDesejado != 1 && turnoDesejado != 2) {
 				cout << "Introduza uma opcao valida: ";
 			}
@@ -152,8 +159,7 @@ int jogo(int opcao) {
 			mostraGrelha();
 			if (turno == true) {
 				cout << "Selecione a posicao desejada: ";
-				cin >> posicao;
-				switch (posicao) {
+				switch (pedeOpcao()) {
 				case 1:
 					if (valores[0][0] != 'X' && valores[0][0] != 'O') {
 						valores[0][0] = jogador;
@@ -310,8 +316,7 @@ int jogo(int opcao) {
 				cout << "Turno do " << j[1].getNome() << " \n";
 			}
 			cout << "Selecione a posicao desejada: ";
-			cin >> posicao;
-			switch (posicao) {
+			switch (pedeOpcao()) {
 				case 1:
 					if (valores[0][0] != 'X' && valores[0][0] != 'O') {
 						valores[0][0] = jogador;
