@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Header.h"
 #include <chrono>
 #include <thread>
@@ -6,9 +7,8 @@
 using namespace std;
 using namespace std::this_thread; // Serve para poder utilizar sleep_for, sleep_until
 using namespace std::chrono; // Serve para poder usar estas medidas de tempo nanoseconds, system_clock, seconds
-using namespace std;
 
-jogador Jogador;
+
 
 int novoJogoMenu() {
 	int opcao;
@@ -37,15 +37,14 @@ int novoJogoMenu() {
 	return 0;
 }
 int menu() {
+	
 	int opcao = 0;
 	do {
 		system("CLS");
 		cout << "---------- Jogo do Galo ----------\n";
 		cout << "Menu: \n";
 		cout << "1 - Novo Jogo \n";
-		cout << "2 - HighScores \n";
-		cout << "3 - Criar Jogador \n";
-		cout << "4 - Sair \n";
+		cout << "2 - Sair \n";
 		cout << "Escolha uma opcao valida: ";
 		cin >> opcao;
 		switch (opcao) {
@@ -54,13 +53,6 @@ int menu() {
 			novoJogoMenu();
 			break;
 		case 2:
-			system("CLS");
-			break;
-		case 3:
-			system("CLS");
-			Jogador.criarJogador();
-			break;
-		case 4:
 			system("CLS");
 			cout << "Escolheu sair" << endl;
 			break;

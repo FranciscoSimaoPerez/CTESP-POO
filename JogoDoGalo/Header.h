@@ -1,56 +1,15 @@
 #pragma once
 #include <iostream>
+#include <string>
+#include <chrono>
+#include <thread>
+#include <vector>
 
 using namespace std;
+using namespace std::this_thread; // Serve para poder utilizar sleep_for, sleep_until
+using namespace std::chrono; // Serve para poder usar estas medidas de tempo nanoseconds, system_clock, seconds
 
+class Jogador;
 int menu();
 int jogo(int opcao);
-
-class jogador {
-public:
-	char nome[10];
-	int idade;
-	int nVitorias;
-	int nJogos;
-	int racioVitoria;
-
-	//Métodos
-	//Cria Jogadores
-	int criarJogador() {
-		system("CLS");
-		cout << "---------- Jogo do Galo ----------\n";
-		cout << "Novo Jogador: \n";
-		cout << "\n\tIntroduza o seu nome: ";
-		cin >> nome;
-		cout << "\n\tIntroduza a sua idade: ";
-		cin >> idade;
-		return 0;
-	}
-
-	//Mostra dados de Jogadores
-	int mostraJogador() {
-		system("CLS");
-		cout << "---------- Jogo do Galo ----------\n";
-		cout << "Dados Jogador: \n";
-		cout << "Nome: " << nome << "\n";
-		cout << "Idade: " << idade << "\n";
-		cout << "Numero de vitorias: " << nVitorias << "\n";
-		cout << "Racio de vitorias: " << racioVitoria << "\n";
-		return 0;
-	}
-
-	//Adiciona Vitória
-	int vitoria() {
-		nVitorias++;
-		nJogos++;
-		racioVitoria = nVitorias / nJogos;
-		return 0;
-	}
-
-	//Adiciona um jogo em caso de empate ou derrota
-	int derrotaOuEmpate() {
-		nJogos++;
-		racioVitoria = nVitorias / nJogos;
-		return 0;
-	}
-};
+int main();

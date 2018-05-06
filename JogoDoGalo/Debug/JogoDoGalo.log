@@ -1,8 +1,5 @@
 ﻿  jogo.cpp
-c:\users\user\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(18): warning C4838: conversion from 'int' to 'const char' requires a narrowing conversion
-c:\users\user\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(18): warning C4309: 'initializing': truncation of constant value
-  jogador.cpp
-  Generating Code...
-c:\users\user\documents\visual studio 2015\projects\jogodogalo\jogo.cpp(43): warning C4172: returning address of local variable or temporary: jogadaCPU
-  JogoDoGalo.vcxproj -> C:\Users\User\Documents\Visual Studio 2015\Projects\JogoDoGalo\Debug\JogoDoGalo.exe
-  JogoDoGalo.vcxproj -> C:\Users\User\Documents\Visual Studio 2015\Projects\JogoDoGalo\Debug\JogoDoGalo.pdb (Full PDB)
+c:\users\franc\documents\github\ctesp-poo\jogodogalo\jogo.cpp(20): warning C4838: conversion from 'int' to 'const char' requires a narrowing conversion
+c:\users\franc\documents\github\ctesp-poo\jogodogalo\jogo.cpp(20): warning C4309: 'initializing': truncation of constant value
+  JogoDoGalo.vcxproj -> C:\Users\franc\Documents\GitHub\CTESP-POO\JogoDoGalo\Debug\JogoDoGalo.exe
+  JogoDoGalo.vcxproj -> C:\Users\franc\Documents\GitHub\CTESP-POO\JogoDoGalo\Debug\JogoDoGalo.pdb (Full PDB)

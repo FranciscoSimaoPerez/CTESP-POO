@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Header.h"
+#include "Jogador.h"
 #include <chrono>
 #include <thread>
 #include <fstream>
@@ -13,11 +14,12 @@ using namespace std::chrono; // Serve para poder usar estas medidas de tempo nan
 
 //Variáveis globais
 int opcao, posicao, turnoDesejado;
+int jogadaCPU[2];
 char vencedor;
 char jogador, jogador2, computador;//Variáveis de cada jogador (X ou O)
 const char grelha[11] = {185,186,187,188,200,201,202,203,204,205,206};//Valores ASCI armazenados em array para criacao da grelha de jogo
 char valores[3][3] = { { '1', '2','3' },{ '4', '5', '6' },{ '7','8','9' } };//Valores iniciais de cada posicao
-string nomeJogador;
+string nomeJogador1, nomeJogador2;
 
 //Funções																			
 //Funcao que mostra grelha de jogo
@@ -37,7 +39,6 @@ int mostraGrelha(){
 
 //Funcao que calcula a jogada do computador
 int* calculaJogadaCPU() {
-	int jogadaCPU[2];
 	jogadaCPU[0] = rand() % 3;
 	jogadaCPU[1] = rand() % 3;
 	return jogadaCPU;
@@ -97,25 +98,11 @@ int reiniciaValores() {
 	return 0;
 }
 
-// Função que lê ficheiro e escreve
-int registaScore(string nomeJogador) {
-	ifstream ficheiroScore;
-	ficheiroScore.open("score.txt");
-	if (ficheiroScore.is_open()) {
-		cout << "Ficheiro Aberto";
-	}
-	else {
-		cout << "Não foi possível abrir o ficheiro score.txt!\n";
-	}
-	return 0;
-}
-
 int jogo(int opcao) {
 	// Chamada da Função que reinicia o array Valores
 	reiniciaValores();
 
 	//Variáveis da função jogo
-	nomeJogador=" ";
 	int numeroJogadas = 0;
 	char voltarMenu;
 	bool turno = false;
@@ -291,19 +278,36 @@ int jogo(int opcao) {
 		return 0;
 	}
 	else if (opcao == 2) {
+		//Multijogador 
+		//Será pedido os nomes dos jogadores caso seja o primeiro jogo, caso contrário é usado os nomes anteriores
+		system("CLS");
+		cout << "---------- Jogo do Galo ----------" << endl;
+		while (j[0].getNome() == " " && j[1].getNome() == " "){
+			cout << "Introduza o nome do Jogador 1(sem espacos): ";
+			cin >> nomeJogador1;
+			cout << "Introduza o nome do Jogador 2(sem espacos): ";
+			cin >> nomeJogador2;
+			j[0].setNome(nomeJogador1);
+			j[1].setNome(nomeJogador2);
+		}
+		cout << "Pontuacao de " << j[0].getNome() << ": " << j[0].getVitorias() << "!\n";
+		cout << "Pontuacao de " << j[1].getNome() << ": " << j[1].getVitorias() << "!\n";
+		sleep_until(system_clock::now() + 5s);
 		mostraGrelha();
-		cout << "Jogador 1 sera 'X' e Jogador 2 sera 'O' \n";
+		cout << j[0].getNome() << " sera 'X' e " << j[1].getNome() << " sera 'O' \n";
 		cout << "Boa Sorte e que ganhe o melhor!";
 		sleep_until(system_clock::now() + 3s);
 		mostraGrelha();
+		//Jogo 
+		//Ciclo while que repete até que chegue ao total de 9 jogadas ou exista um vencedor
 		while (existeVencedor == false && numeroJogadas < 9) {
 			if (numeroJogadas % 2 == 0) {
 				jogador = 'X';
-				cout << "Turno do Jogador 'X' \n";
+				cout << "Turno do " << j[0].getNome() << " \n";
 			}
 			else {
 				jogador = 'O';
-				cout << "Turno do Jogador 'O' \n";
+				cout << "Turno do " << j[1].getNome() << " \n";
 			}
 			cout << "Selecione a posicao desejada: ";
 			cin >> posicao;
@@ -385,25 +389,22 @@ int jogo(int opcao) {
 					break;
 			}
 		}
-		if ((vencedor == 'X' && jogador == 'X') || (vencedor == 'O' && jogador == 'O')) {
-			cout << "O jogador 'X' ganhou o jogo! \n";
-			cout << "Introduza o seu Username Jogador 'X': ";
-			cin >> nomeJogador;
-			cout << "A sua vitória será guardada, "<< nomeJogador << "!\n";
+		//Verifica Vencedor e Incrementa Número de Vitórias
+		if (vencedor == 'X' && jogador == 'X') {
+			cout << "O jogador " << j[0].getNome() << " ganhou o jogo! \n";
+			j[0].incrementaVitorias();
 			sleep_until(system_clock::now() + 3s);
 		}
-		else if ((vencedor == 'X' && jogador != 'X') || (vencedor == 'O' && jogador != 'O')) {
-			cout << "O jogador 'O' ganhou o jogo! \n";
-			cout << "Introduza o seu Username Jogador 'O': ";
-			cin >> nomeJogador;
-			cout << "A sua vitória será guardada, " << nomeJogador << "!\n";
+		else if (vencedor == 'O' && jogador == 'O') {
+			cout << "O jogador " << j[1].getNome() << " ganhou o jogo! \n";
+			j[1].incrementaVitorias();
 			sleep_until(system_clock::now() + 3s);
 		}
 		else {
 			cout << "Jogo terminou empatado! \n";
 			sleep_until(system_clock::now() + 3s);
 		}
-		registaScore(nomeJogador);
+		// Pergunta se deseja voltar ao menu principal
 		cout << "Deseja voltar ao menu?(S ou N) \n";
 		do {
 			cin >> voltarMenu;
