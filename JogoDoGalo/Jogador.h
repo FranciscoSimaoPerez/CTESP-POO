@@ -14,7 +14,6 @@ class Jogador {
 private:
 	string nome;
 	int vitorias;
-
 public:
 	//Construtores
 	Jogador() {

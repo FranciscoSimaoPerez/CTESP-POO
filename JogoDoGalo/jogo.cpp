@@ -86,7 +86,7 @@ bool verificaJogo(char apontaValores[3][3]) {
 	}
 }
 
-// Funçao que reinicia os valores da grelha
+// Função que reinicia os valores da grelha
 int reiniciaValores() {
 	char num = '0';
 	for (int y = 0; y < 3; y++) {
@@ -98,6 +98,7 @@ int reiniciaValores() {
 	return 0;
 }
 
+// Função que converte o char para poder ser aceite como opção no menu
 char pedeOpcao() {
 	char opcao;
 	cin >> opcao;
@@ -140,7 +141,7 @@ int jogo(int opcao) {
 				cout << "Introduza uma opcao valida: ";
 			}
 		} while (jogador != 'X' && jogador != 'x' && jogador != 'O' && jogador != 'o');
-		jogador = toupper(jogador);
+		jogador = toupper(jogador); // Converte letras minúsculas para maiúsculas
 		cout << "Escolheu ser o '" << jogador << "'! \n";
 		sleep_until(system_clock::now() + 2s);
 		if (jogador == 'X')
@@ -409,6 +410,9 @@ int jogo(int opcao) {
 			cout << "Jogo terminou empatado! \n";
 			sleep_until(system_clock::now() + 3s);
 		}
+		//Mostra pontuação de cada Jogador
+		cout << "Pontuacao de " << j[0].getNome() << ": " << j[0].getVitorias() << "!\n";
+		cout << "Pontuacao de " << j[1].getNome() << ": " << j[1].getVitorias() << "!\n";
 		// Pergunta se deseja voltar ao menu principal
 		cout << "Deseja voltar ao menu?(S ou N) \n";
 		do {

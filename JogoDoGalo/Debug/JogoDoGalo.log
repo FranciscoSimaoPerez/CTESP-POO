@@ -1,5 +1,2 @@
-﻿  jogo.cpp
-c:\users\franc\documents\github\ctesp-poo\jogodogalo\jogo.cpp(20): warning C4838: conversion from 'int' to 'const char' requires a narrowing conversion
-c:\users\franc\documents\github\ctesp-poo\jogodogalo\jogo.cpp(20): warning C4309: 'initializing': truncation of constant value
-  JogoDoGalo.vcxproj -> C:\Users\franc\Documents\GitHub\CTESP-POO\JogoDoGalo\Debug\JogoDoGalo.exe
+﻿  JogoDoGalo.vcxproj -> C:\Users\franc\Documents\GitHub\CTESP-POO\JogoDoGalo\Debug\JogoDoGalo.exe
   JogoDoGalo.vcxproj -> C:\Users\franc\Documents\GitHub\CTESP-POO\JogoDoGalo\Debug\JogoDoGalo.pdb (Full PDB)
